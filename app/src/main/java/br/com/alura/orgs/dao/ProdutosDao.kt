@@ -2,13 +2,13 @@ package br.com.alura.orgs.dao
 
 import br.com.alura.orgs.model.Produto
 
-class ProductsDao {
+class ProdutosDao {
 
-    fun addProduct(produto: Produto) {
-      produtos.add(produto)
+    fun adiciona(produto: Produto){
+        produtos.add(produto)
     }
 
-    fun searchProduct(): List<Produto> {
+    fun buscaTodos() : List<Produto> {
         return produtos.toList()
     }
 
