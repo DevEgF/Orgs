@@ -3,13 +3,14 @@ package br.com.alura.orgs.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.databinding.ActivityListaProdutosActivityBinding
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
 
 class ListaProdutosActivity : AppCompatActivity() {
 
-    private val adapter = ListaProdutosAdapter(context = this, produtos = emptyList())
+    private val adapter = ListaProdutosAdapter(context = this)
     private val binding by lazy {
         ActivityListaProdutosActivityBinding.inflate(layoutInflater)
     }
@@ -19,7 +20,6 @@ class ListaProdutosActivity : AppCompatActivity() {
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
-
     }
 
     override fun onResume() {
@@ -54,4 +54,5 @@ class ListaProdutosActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }
