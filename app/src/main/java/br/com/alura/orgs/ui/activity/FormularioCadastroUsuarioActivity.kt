@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.databinding.ActivityFormularioCadastroUsuarioBinding
@@ -16,16 +15,13 @@ class FormularioCadastroUsuarioActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityFormularioCadastroUsuarioBinding.inflate(layoutInflater)
     }
-
     private val dao by lazy {
         AppDatabase.instancia(this).usuarioDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(binding.root)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         configuraBotaoCadastrar()
     }
 
@@ -38,11 +34,11 @@ class FormularioCadastroUsuarioActivity : AppCompatActivity() {
                     dao.salva(novoUsuario)
                     finish()
                 } catch (e: Exception) {
-                    Log.e("Cadastro usuário", "configuraBotaoCadastrar", e)
+                    Log.e("CadastroUsuario", "configuraBotaoCadastrar: ", e)
                     Toast.makeText(
                         this@FormularioCadastroUsuarioActivity,
-                        "Falha ao cadastrar o usuário",
-                        Toast.LENGTH_LONG
+                        "Falha ao cadastrar usuário",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
